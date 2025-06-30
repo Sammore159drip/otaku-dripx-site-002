@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,192 +7,217 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Bangers&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       background: radial-gradient(ellipse at center, #000 0%, #1a1a1a 100%);
       font-family: 'Orbitron', sans-serif;
       color: #ff3c00;
       overflow-x: hidden;
-    }body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: repeating-radial-gradient(circle, rgba(255,60,0,0.05) 1px, transparent 3px);
-  pointer-events: none;
-  z-index: 0;
-}
+    }
 
-.vault-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  position: relative;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-radial-gradient(circle, rgba(255,60,0,0.05) 1px, transparent 3px);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.glow-title {
-  font-size: 2rem;
-  text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
-  margin-bottom: 0.2rem;
-  text-align: center;
-}
+    .vault-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+    }
 
-.sub-title {
-  font-size: 1rem;
-  font-family: 'Bangers', cursive;
-  letter-spacing: 2px;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
+    .glow-title {
+      font-size: 2rem;
+      text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+      text-align: center;
+    }
 
-.layout {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
+    .sub-title {
+      font-size: 1rem;
+      font-family: 'Bangers', cursive;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-.status-box {
-  background: rgba(255, 60, 0, 0.05);
-  border: 1px solid #ff3c00;
-  padding: 1rem 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ff3c00;
-  font-size: 0.75rem;
-  min-width: 150px;
-  text-align: center;
-  font-family: 'Bangers', cursive;
-}
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
 
-.video-wrapper {
-  border: 1px solid #ff3c00;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #ff3c00;
-  overflow: hidden;
-}
+    .status-box {
+      background: rgba(255, 60, 0, 0.05);
+      border: 1px solid #ff3c00;
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff3c00;
+      font-size: 0.75rem;
+      text-align: center;
+      font-family: 'Bangers', cursive;
+      min-width: 150px;
+    }
 
-.video-wrapper video {
-  width: 240px;
-  height: 340px;
-  object-fit: cover;
-  display: block;
-}
+    .video-wrapper {
+      border: 1px solid #ff3c00;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff3c00;
+      overflow: hidden;
+    }
 
-.code-box {
-  margin-top: 2rem;
-  background: rgba(255, 60, 0, 0.05);
-  border: 1px solid #ff3c00;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 0.9rem;
-  box-shadow: 0 0 15px #ff3c00;
-}
+    .video-wrapper video {
+      width: 280px;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
 
-.code-box .drop-code {
-  margin: 1rem 0;
-  padding: 0.7rem 1.2rem;
-  background: #1a1a1a;
-  border: 1px solid #ff3c00;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-family: 'Bangers', cursive;
-  letter-spacing: 2px;
-  box-shadow: inset 0 0 10px #ff3c00;
-}
+    .code-box {
+      margin-top: 1rem;
+      background: rgba(255, 60, 0, 0.05);
+      border: 1px solid #ff3c00;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      box-shadow: 0 0 15px #ff3c00;
+      width: 100%;
+    }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+    .code-box .drop-code {
+      margin: 1rem 0;
+      padding: 0.7rem 1.2rem;
+      background: #1a1a1a;
+      border: 1px solid #ff3c00;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-family: 'Bangers', cursive;
+      letter-spacing: 2px;
+      box-shadow: inset 0 0 10px #ff3c00;
+    }
 
-.btn {
-  background: linear-gradient(to right, #ff3c00, #8b0000);
-  color: white;
-  padding: 0.7rem 1.4rem;
-  border: none;
-  border-radius: 8px;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
-  box-shadow: 0 0 10px #ff3c00;
-  transition: 0.3s ease;
-}
-.btn:hover {
-  background: white;
-  color: black;
-  transform: scale(1.05);
-}
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
 
-/* Ember Effect */
-.embers {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-}
-.embers span {
-  position: absolute;
-  display: block;
-  width: 2px;
-  height: 2px;
-  background: #ff3c00;
-  animation: ember 5s linear infinite;
-  opacity: 0.4;
-  border-radius: 50%;
-}
-@keyframes ember {
-  from {
-    transform: translateY(0) scale(0.5);
-  }
-  to {
-    transform: translateY(-100vh) scale(1);
-  }
-}
+    .btn {
+      background: linear-gradient(to right, #ff3c00, #8b0000);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff3c00;
+      transition: 0.3s ease;
+    }
 
+    .btn:hover {
+      background: white;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    /* Ember Effect */
+    .embers {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .embers span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      background: #ff3c00;
+      animation: ember 5s linear infinite;
+      opacity: 0.4;
+      border-radius: 50%;
+    }
+
+    @keyframes ember {
+      from {
+        transform: translateY(0) scale(0.5);
+      }
+      to {
+        transform: translateY(-100vh) scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .video-wrapper video {
+        width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="embers" id="embers"></div>  <div class="vault-container">
+  <div class="embers" id="embers"></div>
+  <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
-    <div class="sub-title">ICHIGO KUROSAKI // SOUL VAULT</div><div class="layout">
-  <div class="status-box">
-    <div><strong>REACTOR STATUS</strong></div>
-    CORE TEMP: 11300K<br>
-    STABILITY: 97%<br>
-    OVERRIDE CODE: ICH-HX
+    <div class="sub-title">ICHIGO KUROSAKI // SOUL VAULT</div>
+
+    <div class="layout">
+      <div class="status-box">
+        <div><strong>REACTOR STATUS</strong></div>
+        CORE TEMP: 11300K<br>
+        STABILITY: 97%<br>
+        OVERRIDE CODE: ICH-HX
+      </div>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop>
+          <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="status-box">
+        <div><strong>ENERGY SYNC</strong></div>
+        SPIRIT LOAD: 82%<br>
+        RESONANCE: HIGH<br>
+        DIM SHIFT: LOCKED
+      </div>
+    </div>
+
+    <div class="code-box">
+      <div>USER ID: DSX-016</div>
+      <div>DROPS CLAIMED: 01 / 24</div>
+      <div>PROTOCOL ENDS IN: <span id="timer">03:17:45</span></div>
+      <div class="drop-code" id="drop-code">ICHIGOX100</div>
+      <div class="buttons">
+        <button class="btn" onclick="copyCode()">⚡ USE CODE</button>
+        <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.in'">🧬 CLAIM ANOTHER DRIP</button>
+      </div>
+    </div>
   </div>
 
-  <div class="video-wrapper">
-    <video autoplay muted loop>
-      <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <div class="status-box">
-    <div><strong>ENERGY SYNC</strong></div>
-    SPIRIT LOAD: 82%<br>
-    RESONANCE: HIGH<br>
-    DIM SHIFT: LOCKED
-  </div>
-</div>
-
-<div class="code-box">
-  <div>USER ID: DSX-016</div>
-  <div>DROPS CLAIMED: 01 / 24</div>
-  <div>PROTOCOL ENDS IN: <span id="timer">03:17:45</span></div>
-  <div class="drop-code" id="drop-code">ICHIGOX100</div>
-  <div class="buttons">
-    <button class="btn" onclick="copyCode()">⚡ USE CODE</button>
-    <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.in'">🧬 CLAIM ANOTHER DRIP</button>
-  </div>
-</div>
-
-  </div>  <script>
+  <script>
     // Countdown Timer
     const timer = document.getElementById("timer");
     let seconds = 11865;
@@ -219,5 +245,6 @@
       ember.style.animationDelay = (Math.random() * 5) + "s";
       emberContainer.appendChild(ember);
     }
-  </script></body>
+  </script>
+</body>
 </html>
