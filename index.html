@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,207 +9,190 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(ellipse at center, #000000 0%, #1c1c1c 100%);
-      color: #ff3c00;
       font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle, #000 0%, #1c1c1c 100%);
+      color: #ff3c00;
       overflow: hidden;
       position: relative;
-    }
+    }/* Ember particle background */
+.particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff3c00;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 10s linear infinite;
+}
+@keyframes float {
+  from { transform: translateY(100vh) scale(0.6); opacity: 0.1; }
+  to { transform: translateY(-10vh) scale(1.2); opacity: 0.6; }
+}
 
-    .particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
+/* Intro animation */
+.intro-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: introFade 4s ease forwards;
+}
+.intro-text {
+  font-size: 2rem;
+  color: #ff3c00;
+  border-right: 2px solid #ff3c00;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(25), blink 0.7s step-end infinite;
+}
+@keyframes introFade {
+  0%, 90% { opacity: 1; }
+  100% { opacity: 0; z-index: -1; }
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  50% { border-color: transparent }
+}
 
-    .particles span {
-      position: absolute;
-      display: block;
-      width: 4px;
-      height: 4px;
-      background: #ff3c00;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: floatUp 8s linear infinite;
-    }
+.vault-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 1rem;
+  z-index: 10;
+  position: relative;
+}
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(100vh) scale(0.6);
-        opacity: 0.1;
-      }
-      to {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0.6;
-      }
-    }
+.glow-title {
+  font-size: 2.5rem;
+  color: #ff3c00;
+  text-shadow: 0 0 10px #ff3c00, 0 0 30px #ff3c00;
+}
 
-    .intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 999;
-      opacity: 1;
-      animation: intro-fade 4s ease-in-out forwards;
-    }
+.glitch-character {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.8rem;
+  margin: 0.8rem 0 1.5rem;
+  animation: glitch 1.5s infinite alternate;
+}
+@keyframes glitch {
+  0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+  25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
+  50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
+  75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
+  100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+}
 
-    .intro-text {
-      font-size: 2rem;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #ff3c00;
-      color: #ff3c00;
-      animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
-      animation-delay: 0.5s;
-    }
+.character-art {
+  width: 340px;
+  height: 480px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(255, 60, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 60, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+.character-art:hover { transform: scale(1.05); }
 
-    @keyframes intro-fade {
-      0%, 80% { opacity: 1; }
-      100% { opacity: 0; z-index: -1; transform: scale(1.05); }
-    }
+video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
 
-    @keyframes typeIn { from { width: 0 } to { width: 100% } }
+.panel {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(28, 28, 28, 0.6);
+  border: 1px solid #ff3c00;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
+  max-width: 600px;
+}
 
-    @keyframes blink { 50% { border-color: transparent } }
+.glow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  margin: 0.7rem 0;
+  text-shadow: 0 0 10px #ff3c00;
+}
 
-    .vault-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      z-index: 10;
-      position: relative;
-      padding: 1rem;
-    }
+.access-key {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  padding: 0.8rem 1.4rem;
+  background: #1c1c1c;
+  border: 1px solid #ff3c00;
+  border-radius: 10px;
+  color: #ff3c00;
+  animation: pulse-glow 3s infinite ease-in-out;
+  letter-spacing: 3px;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
+  50% { box-shadow: 0 0 35px #ff3c00 inset; }
+}
 
-    .glow-title {
-      font-size: 2.6rem;
-      color: #ff3c00;
-      text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
-    }
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
 
-    .glitch-character {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #ff3c00;
-      margin-top: 0.5rem;
-      margin-bottom: 1.5rem;
-      animation: glitch 1.5s infinite alternate;
-    }
+.btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #ff3c00, #320000);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff3c00;
+  transition: all 0.3s ease;
+  animation: glitch 2s infinite alternate;
+}
+.btn:hover {
+  background: white;
+  color: black;
+  transform: scale(1.06);
+}
 
-    .character-art {
-      width: 360px;
-      height: 500px;
-      box-shadow: 0 0 25px #ff3c00;
-      border-radius: 12px;
-      overflow: hidden;
-      z-index: 5;
-    }
-
-    .panel {
-      margin-top: 2rem;
-      padding: 2rem;
-      background: rgba(255, 60, 0, 0.05);
-      border: 1px solid #ff3c00;
-      border-radius: 16px;
-      max-width: 600px;
-      box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
-    }
-
-    .glow {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.2rem;
-      margin: 0.8rem 0;
-      color: #ff3c00;
-      text-shadow: 0 0 10px #ff3c00;
-    }
-
-    .access-key {
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      padding: 0.9rem 1.6rem;
-      background: #1c1c1c;
-      border: 1px solid #ff3c00;
-      border-radius: 12px;
-      letter-spacing: 4px;
-      color: #ff3c00;
-      animation: pulse-glow 3s infinite ease-in-out;
-    }
-
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      margin-top: 2.2rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, #ff3c00, #320000);
-      color: #fff;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 0 20px #ff3c00, inset 0 0 10px #ff3c00;
-      transition: all 0.4s ease;
-    }
-
-    .btn:hover {
-      background: #fff;
-      color: #000;
-      transform: scale(1.07);
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
-      25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
-      50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
-      75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
-      100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
-      50% { box-shadow: 0 0 35px #ff3c00 inset; }
-    }
   </style>
 </head>
 <body>
-
-  <!-- Ember Particles -->
-  <div class="particles" id="particle-container"></div>
-
-  <!-- Intro -->
+  <audio id="clickSound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-click-223.wav" type="audio/wav">
+  </audio>  <div class="particles" id="particles"></div>
   <div class="intro-screen">
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
-
-  <!-- Main Vault -->
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
     <div class="character-art">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline>
+        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="panel">
@@ -219,24 +201,22 @@
       <p class="glow">PROTOCOL ENDS IN: <span id="timer">03:17:56</span></p>
       <div class="access-key" id="drop-code">ICHIGOX100</div>
       <div class="action-buttons">
-        <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
-        <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+        <button class="btn" onclick="playClick(); copyDropCode()">⚡ USE CODE</button>
+        <button class="btn" onclick="playClick(); window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
       </div>
     </div>
-  </div>
-
-  <script>
-    // Floating embers
-    const container = document.getElementById("particle-container");
-    for (let i = 0; i < 60; i++) {
-      const particle = document.createElement("span");
-      particle.style.left = Math.random() * 100 + "vw";
-      particle.style.top = Math.random() * 100 + "vh";
-      particle.style.animationDelay = Math.random() * 10 + "s";
-      container.appendChild(particle);
+  </div>  <script>
+    // Ember Particles
+    const particleContainer = document.getElementById("particles");
+    for (let i = 0; i < 50; i++) {
+      const span = document.createElement("span");
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.top = Math.random() * 100 + "vh";
+      span.style.animationDelay = (Math.random() * 10) + "s";
+      particleContainer.appendChild(span);
     }
 
-    // Countdown logic
+    // Countdown
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
@@ -247,13 +227,30 @@
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
-    // Copy code function
+    // Copy with Sound
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
-        alert("Code copied to clipboard: " + code);
+        const msg = document.createElement("div");
+        msg.textContent = "✓ CODE COPIED";
+        msg.style.position = "fixed";
+        msg.style.bottom = "20px";
+        msg.style.left = "50%";
+        msg.style.transform = "translateX(-50%)";
+        msg.style.background = "#1c1c1c";
+        msg.style.color = "#ff3c00";
+        msg.style.padding = "0.6rem 1.2rem";
+        msg.style.border = "1px solid #ff3c00";
+        msg.style.borderRadius = "10px";
+        msg.style.zIndex = "1000";
+        msg.style.boxShadow = "0 0 10px #ff3c00";
+        document.body.appendChild(msg);
+        setTimeout(() => msg.remove(), 2000);
       });
     }
-  </script>
-</body>
+
+    function playClick() {
+      document.getElementById("clickSound").play();
+    }
+  </script></body>
 </html>
