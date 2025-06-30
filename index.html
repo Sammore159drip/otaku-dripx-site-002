@@ -1,9 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ICHIGO KUROSAKI // VAULT DROP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -11,163 +12,179 @@
       height: 100%;
       background: radial-gradient(ellipse at center, #000000 0%, #1c1c1c 100%);
       color: #ff3c00;
-      font-family: 'Comic Neue', sans-serif;
-      overflow-x: hidden;
-    }.vault-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2rem;
-  text-align: center;
-}
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
 
-.glow-title {
-  font-size: 2.2rem;
-  text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
-  margin-bottom: 0.2rem;
-}
+    /* Ember particles */
+    .embers {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-.glitch-character {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #ff3c00;
-  animation: glitch 1.5s infinite alternate;
-}
+    .embers span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      background: #ff3c00;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: rise 6s linear infinite;
+    }
 
-.character-art {
-  width: 360px;
-  height: 500px;
-  margin: 1rem 0;
-  border: 2px solid #ff3c00;
-  border-radius: 12px;
-  box-shadow: 0 0 30px #ff3c00;
-}
+    @keyframes rise {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
 
-.character-art video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
+    .vault-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      padding: 1rem;
+    }
 
-.layout-row {
-  display: flex;
-  justify-content: space-around;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
+    .glow-title {
+      font-size: 2.6rem;
+      color: #ff3c00;
+      text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+    }
 
-.side-panel {
-  width: 300px;
-  padding: 1rem;
-  background: rgba(255, 60, 0, 0.05);
-  border: 1px solid #ff3c00;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(255, 60, 0, 0.2);
-}
+    .glitch-character {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff3c00;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      animation: glitch 1.5s infinite alternate;
+    }
 
-.side-panel p {
-  margin: 0.4rem 0;
-  font-size: 0.95rem;
-  text-align: left;
-}
+    .character-art {
+      width: 360px;
+      height: 500px;
+      border-radius: 16px;
+      box-shadow: 0 0 50px rgba(255, 60, 0, 0.3);
+      overflow: hidden;
+    }
 
-.bottom-panel {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  background: rgba(255, 60, 0, 0.05);
-  border: 1px solid #ff3c00;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(255, 60, 0, 0.2);
-  max-width: 90vw;
-}
+    .panel {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(255, 60, 0, 0.05);
+      border: 1px solid #ff3c00;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
+      z-index: 5;
+    }
 
-.access-key {
-  margin-top: 0.8rem;
-  font-size: 1.3rem;
-  padding: 0.6rem 1rem;
-  background: #1c1c1c;
-  border: 1px solid #ff3c00;
-  border-radius: 12px;
-  letter-spacing: 3px;
-  color: #ff3c00;
-  text-align: center;
-}
+    .glow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.2rem;
+      margin: 0.8rem 0;
+      color: #ff3c00;
+      text-shadow: 0 0 10px #ff3c00;
+    }
 
-.action-buttons {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+    .access-key {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      padding: 0.9rem 1.6rem;
+      background: #1c1c1c;
+      border: 1px solid #ff3c00;
+      border-radius: 12px;
+      letter-spacing: 4px;
+      color: #ff3c00;
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
 
-.btn {
-  padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, #ff3c00, #320000);
-  color: #fff;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 20px #ff3c00, inset 0 0 10px #ff3c00;
-}
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
 
-.btn:hover {
-  background: #fff;
-  color: #000;
-}
+    .btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #ff3c00, #320000);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff3c00, inset 0 0 10px #ff3c00;
+      transition: all 0.4s ease;
+    }
 
-@keyframes glitch {
-  0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
-  25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
-  50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
-  75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
-  100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
-}
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.07);
+    }
 
+    @keyframes glitch {
+      0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+      25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
+      50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
+      75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
+      100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
+      50% { box-shadow: 0 0 35px #ff3c00 inset; }
+    }
   </style>
 </head>
 <body>
+  <!-- Ember particles -->
+  <div class="embers" id="ember-container"></div>
+
+  <!-- Vault Content -->
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
     <div class="character-art">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
         <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
       </video>
-    </div><div class="layout-row">
-  <div class="side-panel">
-    <p>🔋 ENERGY LEVEL: 89%</p>
-    <p>⚙️ CORE STATUS: SYNCED</p>
-    <p>🧬 HOUGYOKU LINK: STABLE</p>
-    <p>⚔️ CLASH DETECTED: LEVEL 6</p>
-    <p>🌀 BANKAI MODE: ACTIVE</p>
+    </div>
+    <div class="panel">
+      <p class="glow">USER ID: DSX-016</p>
+      <p class="glow">DROPS CLAIMED: 01 / 24</p>
+      <p class="glow">PROTOCOL ENDS IN: <span id="timer">03:17:56</span></p>
+      <div class="access-key" id="drop-code">ICHIGOX100</div>
+      <div class="action-buttons">
+        <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
+        <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+      </div>
+    </div>
   </div>
 
-  <div class="side-panel">
-    <p>🎯 TARGET: AIZEN PROTOCOL</p>
-    <p>📍 LOCATION: KARAKURA SECTOR</p>
-    <p>💥 SPIRIT PRESSURE: HIGH</p>
-    <p>🧭 DROP SEED: DELTA-RIFT</p>
-    <p>📡 LAST SIGNAL: TRACE LOCKED</p>
-  </div>
-</div>
-
-<div class="bottom-panel">
-  <p>USER CODE: DSX-016</p>
-  <p>DROPS UNLOCKED: 01 / 24</p>
-  <p>TIMER LEFT: <span id="timer">03:17:56</span></p>
-  <div class="access-key" id="drop-code">ICHIGOX100</div>
-  <div class="action-buttons">
-    <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
-    <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
-  </div>
-</div>
-
-  </div>  <script>
+  <script>
+    // Countdown timer
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
@@ -178,11 +195,24 @@
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
+    // Copy code function
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
         alert("Code copied: " + code);
       });
     }
-  </script></body>
+
+    // Generate ember particles
+    const emberContainer = document.getElementById("ember-container");
+    for (let i = 0; i < 50; i++) {
+      const ember = document.createElement("span");
+      ember.style.left = Math.random() * 100 + "vw";
+      ember.style.top = Math.random() * 100 + "vh";
+      ember.style.animationDelay = Math.random() * 6 + "s";
+      ember.style.opacity = Math.random() * 0.7 + 0.2;
+      emberContainer.appendChild(ember);
+    }
+  </script>
+</body>
 </html>
