@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICHIGO KUROSAKI // VAULT DROP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #000000 0%, #1c1c1c 100%);
+      color: #ff3c00;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
+    .intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      opacity: 1;
+      animation: intro-fade 4s ease-in-out forwards;
+    }
+    .intro-text {
+      font-size: 2rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #ff3c00;
+      color: #ff3c00;
+      animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
+    }
+    @keyframes intro-fade {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; z-index: -1; }
+    }
+    @keyframes typeIn {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .vault-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      padding: 1rem;
+    }
+    .glow-title {
+      font-size: 2.6rem;
+      color: #ff3c00;
+      text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+    }
+    .glitch-character {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff3c00;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      animation: glitch 1.5s infinite alternate;
+    }
+    .character-art {
+      width: 360px;
+      height: 500px;
+    }
+    .panel {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(255, 60, 0, 0.05);
+      border: 1px solid #ff3c00;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
+      z-index: 5;
+    }
+    .glow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.2rem;
+      margin: 0.8rem 0;
+      color: #ff3c00;
+      text-shadow: 0 0 10px #ff3c00;
+    }
+    .access-key {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      padding: 0.9rem 1.6rem;
+      background: #1c1c1c;
+      border: 1px solid #ff3c00;
+      border-radius: 12px;
+      letter-spacing: 4px;
+      color: #ff3c00;
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #ff3c00, #320000);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff3c00, inset 0 0 10px #ff3c00;
+      transition: all 0.4s ease;
+    }
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.07);
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+      25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
+      50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
+      75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
+      100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
+      50% { box-shadow: 0 0 35px #ff3c00 inset; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-screen">
+    <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
+  </div>
+  <div class="vault-container">
+    <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
+    <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
+    <div class="character-art">
+      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="panel">
+      <p class="glow">USER ID: DSX-016</p>
+      <p class="glow">DROPS CLAIMED: 01 / 24</p>
+      <p class="glow">PROTOCOL ENDS IN: <span id="timer">03:17:56</span></p>
+      <div class="access-key" id="drop-code">ICHIGOX100</div>
+      <div class="action-buttons">
+        <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
+        <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    let countdown = document.getElementById("timer");
+    let seconds = 11876;
+    setInterval(() => {
+      seconds--;
+      let h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      let m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      let s = String(seconds % 60).padStart(2, '0');
+      countdown.textContent = `${h}:${m}:${s}`;
+    }, 1000);
+
+    function copyDropCode() {
+      const code = document.getElementById("drop-code").textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied to clipboard: " + code);
+      });
+    }
+  </script>
+</body>
+</html>
