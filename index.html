@@ -1,32 +1,46 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ICHIGO KUROSAKI // VAULT DROP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(ellipse at center, #000 0%, #1c1c1c 100%);
-      font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
+      background: radial-gradient(ellipse at center, #000000 0%, #1c1c1c 100%);
       color: #ff3c00;
-    }.particles {
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, rgba(255, 60, 0, 0.08) 0%, transparent 70%),
+              repeating-linear-gradient(0deg, rgba(255, 60, 0, 0.04) 0px, transparent 1px, rgba(255, 60, 0, 0.04) 2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particles {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 0;
   overflow: hidden;
+  z-index: 0;
   pointer-events: none;
 }
 
 .particles span {
   position: absolute;
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   background: #ff3c00;
   border-radius: 50%;
   opacity: 0.3;
@@ -34,192 +48,192 @@
 }
 
 @keyframes floatUp {
-  from { transform: translateY(100vh) scale(0.6); opacity: 0.2; }
-  to { transform: translateY(-10vh) scale(1); opacity: 0.6; }
+  from {
+    transform: translateY(100vh) scale(0.6);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0.6;
+  }
 }
 
-.container {
+.vault-container {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'left video right'
+    'left info right';
+  grid-template-columns: 1fr 360px 1fr;
+  gap: 2rem;
+  height: 100vh;
+  padding: 2rem;
   position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
+  z-index: 10;
 }
 
-.title {
+.header {
+  grid-area: header;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px #ff3c00;
 }
 
-.subtitle {
-  font-size: 1rem;
-  margin-bottom: 2rem;
+.glow-title {
+  font-size: 2rem;
+  text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
+}
+
+.glitch-character {
   font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ff3c00;
+  animation: glitch 1.5s infinite alternate;
 }
 
 .video-box {
-  width: 360px;
-  height: 500px;
-  background: #000;
-  border-radius: 16px;
+  grid-area: video;
+  border: 2px solid #ff3c00;
+  padding: 1rem;
+  border-radius: 12px;
   box-shadow: 0 0 25px #ff3c00;
-  overflow: hidden;
-  margin-bottom: 2rem;
 }
 
 .video-box video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
 }
 
-.info-section {
+.left-box, .right-box {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.left-box {
+  grid-area: left;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.right-box {
+  grid-area: right;
+  align-items: flex-start;
 }
 
 .info-box {
+  grid-area: info;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.data-panel {
+  padding: 1rem;
   background: rgba(255, 60, 0, 0.05);
   border: 1px solid #ff3c00;
-  border-radius: 12px;
-  padding: 1rem 1.2rem;
-  width: 260px;
-  box-shadow: 0 0 15px rgba(255, 60, 0, 0.3);
-}
-
-.info-box p {
-  font-size: 0.95rem;
-  margin: 0.5rem 0;
-  font-family: 'Share Tech Mono', monospace;
-}
-
-.code-box {
-  background: #1c1c1c;
-  border: 1px solid #ff3c00;
-  border-radius: 10px;
-  padding: 0.8rem 1.4rem;
-  font-size: 1.2rem;
-  letter-spacing: 3px;
-  box-shadow: inset 0 0 10px #ff3c00;
-  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 60, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 .btn-group {
   display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
-  padding: 0.8rem 1.6rem;
+  padding: 0.8rem 1.5rem;
   background: linear-gradient(135deg, #ff3c00, #320000);
-  color: #fff;
   border: none;
   border-radius: 10px;
+  color: #fff;
   font-family: 'Orbitron', sans-serif;
   cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 0 15px #ff3c00, inset 0 0 10px #ff3c00;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 12px #ff3c00;
+  transition: transform 0.3s ease;
 }
 
 .btn:hover {
+  transform: scale(1.05);
   background: #fff;
   color: #000;
-  transform: scale(1.05);
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+  25% { transform: translateX(2px); text-shadow: -2px 0 #ff3c00; }
+  50% { transform: translateX(-2px); text-shadow: 2px 0 #ff3c00; }
+  75% { transform: translateX(1px); text-shadow: -1px 0 #ff3c00; }
+  100% { transform: translate(0); text-shadow: 1px 0 #ff3c00; }
+}
+
+.data-line {
+  font-size: 0.9rem;
+  font-family: 'Share Tech Mono', monospace;
+  margin: 4px 0;
+  text-shadow: 0 0 6px #ff3c00;
 }
 
   </style>
 </head>
 <body>
-  <div class="particles" id="particle-container"></div>  <div class="container">
-    <div class="title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
-    <div class="subtitle">ICHIGO KUROSAKI // SOUL VAULT</div><div class="video-box">
+  <div class="particles" id="particle-container"></div>  <div class="vault-container">
+    <div class="header">
+      <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
+      <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
+    </div><div class="left-box">
+  <div class="data-line">RANK: VANGUARD</div>
+  <div class="data-line">ENERGY LEVEL: 89%</div>
+  <div class="data-line">SPIRIT PRESSURE: ACTIVE</div>
+  <div class="data-line">REACTOR STATUS: STABLE</div>
+  <div class="data-line">CLASH DETECTED: LEVEL 6</div>
+  <div class="data-line">SHIKAI MODE: DISABLED</div>
+  <div class="data-line">BANKAI MODE: ACTIVE</div>
+</div>
+
+<div class="video-box">
   <video autoplay muted loop playsinline>
-    <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4"/>
+    <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
   </video>
 </div>
 
-<div class="code-box" id="drop-code">ICHIGOX100</div>
-
-<div class="info-section">
-  <div class="info-box">
-    <p>USER ID: DSX-016</p>
-    <p>DROPS CLAIMED: 01 / 24</p>
-    <p>PROTOCOL ENDS IN: <span id="timer">03:17:56</span></p>
-    <p>RANK: VANGUARD</p>
-    <p>ENERGY LEVEL: 89%</p>
-  </div>
-
-  <div class="info-box">
-    <p>REACTOR STATUS: STABLE</p>
-    <p>FACTION: SOUL REAPER</p>
-    <p>TARGET: AIZEN PROTOCOL</p>
-    <p>SPIRIT PRESSURE: ACTIVE</p>
-    <p>CLASH DETECTED: LEVEL 6</p>
-  </div>
-
-  <div class="info-box">
-    <p>ENERGY SYNC: HOUGYOKU CORE</p>
-    <p>SHIKAI MODE: DISABLED</p>
-    <p>BANKAI MODE: ACTIVE</p>
-    <p>DROP SEED: DELTA-RIFT</p>
-    <p>LAST BREACH: KARAKURA SECTOR</p>
-  </div>
-
-  <div class="info-box">
-    <p>DRIP STATUS: VERIFIED</p>
-    <p>DRIP CLASS: OMEGA</p>
-    <p>STABILITY RATING: 9.7</p>
-    <p>REDEEM WINDOW: 02:11:00</p>
-    <p>RESURRECTION COUNTDOWN: 04:19:22</p>
-  </div>
+<div class="right-box">
+  <div class="data-line">DROP CODE: ICHIGOX100</div>
+  <div class="data-line">TARGET: AIZEN PROTOCOL</div>
+  <div class="data-line">ENERGY SYNC: HOUGYOKU CORE</div>
+  <div class="data-line">DROP CLASS: OMEGA</div>
+  <div class="data-line">STABILITY: 9.7</div>
+  <div class="data-line">FACTION: SOUL REAPER</div>
+  <div class="data-line">SECTOR: KARAKURA</div>
 </div>
 
-<div class="btn-group">
-  <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
-  <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+<div class="info-box">
+  <div class="data-panel">
+    <div class="data-line">USER ID: DSX-016</div>
+    <div class="data-line">DROPS CLAIMED: 01 / 24</div>
+    <div class="data-line">PROTOCOL ENDS IN: <span id="timer">03:17:56</span></div>
+    <div class="data-line">REDEEM WINDOW: 02:11:00</div>
+    <div class="data-line">RESURRECTION COUNTDOWN: 00:19:22</div>
+    <div class="data-line">DROP SEED: DELTA-RIFT</div>
+    <div class="data-line">DRIP STATUS: VERIFIED</div>
+    <div class="btn-group">
+      <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
+      <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+    </div>
+  </div>
 </div>
 
   </div>  <script>
-    const container = document.getElementById("particle-container");
-    for (let i = 0; i < 60; i++) {
-      const span = document.createElement("span");
-      span.style.left = Math.random() * 100 + "vw";
-      span.style.top = Math.random() * 100 + "vh";
-      span.style.animationDelay = (Math.random() * 10) + "s";
-      container.appendChild(span);
-    }
-
-    function copyDropCode() {
-      const code = document.getElementById("drop-code").textContent;
-      navigator.clipboard.writeText(code).then(() => {
-        const msg = document.createElement("div");
-        msg.textContent = "✓ CODE COPIED";
-        msg.style.position = "fixed";
-        msg.style.bottom = "20px";
-        msg.style.left = "50%";
-        msg.style.transform = "translateX(-50%)";
-        msg.style.background = "#1c1c1c";
-        msg.style.color = "#ff3c00";
-        msg.style.padding = "0.6rem 1.2rem";
-        msg.style.border = "1px solid #ff3c00";
-        msg.style.borderRadius = "10px";
-        msg.style.zIndex = "1000";
-        msg.style.boxShadow = "0 0 10px #ff3c00";
-        document.body.appendChild(msg);
-        setTimeout(() => msg.remove(), 2000);
-      });
-    }
-
-    let countdown = document.getElementById("timer");
+    const countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
       seconds--;
@@ -228,5 +242,20 @@
       let s = String(seconds % 60).padStart(2, '0');
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
+
+    function copyDropCode() {
+      navigator.clipboard.writeText("ICHIGOX100").then(() => {
+        alert("CODE COPIED: ICHIGOX100");
+      });
+    }
+
+    const particleContainer = document.getElementById("particle-container");
+    for (let i = 0; i < 70; i++) {
+      const p = document.createElement("span");
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.top = Math.random() * 100 + "vh";
+      p.style.animationDelay = Math.random() * 10 + "s";
+      particleContainer.appendChild(p);
+    }
   </script></body>
 </html>
