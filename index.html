@@ -17,19 +17,6 @@
       position: relative;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: radial-gradient(circle at center, rgba(255, 60, 0, 0.08) 0%, transparent 70%),
-                  repeating-linear-gradient(0deg, rgba(255, 60, 0, 0.04) 0px, transparent 1px, rgba(255, 60, 0, 0.04) 2px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .intro-screen {
       position: fixed;
       top: 0;
@@ -101,37 +88,17 @@
       animation: glitch 1.5s infinite alternate;
     }
 
-    .character-wrapper {
-      position: relative;
-      width: 360px;
-      height: 500px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .vault-aura {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 60, 0, 0.15), transparent 70%);
-      box-shadow: 0 0 80px 40px rgba(255, 60, 0, 0.1);
-      animation: auraPulse 5s infinite ease-in-out;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes auraPulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.08); opacity: 1; }
-    }
-
     .character-art {
-      position: relative;
       width: 360px;
       height: 500px;
-      z-index: 1;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 60, 0, 0.5),
+                  0 0 80px rgba(255, 60, 0, 0.3),
+                  0 0 120px rgba(255, 60, 0, 0.2);
+      animation: auraPulse 4s ease-in-out infinite;
+      z-index: 2;
     }
 
     .panel {
@@ -204,6 +171,19 @@
       0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
       50% { box-shadow: 0 0 35px #ff3c00 inset; }
     }
+
+    @keyframes auraPulse {
+      0%, 100% {
+        box-shadow: 0 0 40px rgba(255, 60, 0, 0.5),
+                    0 0 80px rgba(255, 60, 0, 0.3),
+                    0 0 120px rgba(255, 60, 0, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 60px rgba(255, 60, 0, 0.7),
+                    0 0 100px rgba(255, 60, 0, 0.4),
+                    0 0 140px rgba(255, 60, 0, 0.3);
+      }
+    }
   </style>
 </head>
 <body>
@@ -212,20 +192,15 @@
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
 
-  <!-- Vault -->
+  <!-- Main Vault -->
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
-
-    <div class="character-wrapper">
-      <div class="vault-aura"></div>
-      <div class="character-art">
-        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
-          <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
-        </video>
-      </div>
+    <div class="character-art">
+      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
+      </video>
     </div>
-
     <div class="panel">
       <p class="glow">USER ID: DSX-016</p>
       <p class="glow">DROPS CLAIMED: 01 / 24</p>
@@ -239,7 +214,7 @@
   </div>
 
   <script>
-    // Countdown
+    // Countdown Timer
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
