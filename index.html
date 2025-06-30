@@ -17,6 +17,37 @@
       position: relative;
     }
 
+    /* Ember Particles */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #ff3c00;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatUp 10s linear infinite;
+    }
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0.2;
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0.6;
+      }
+    }
+
+    /* Intro */
     .intro-screen {
       position: fixed;
       top: 0;
@@ -32,7 +63,6 @@
       opacity: 1;
       animation: intro-fade 4s ease-in-out forwards;
     }
-
     .intro-text {
       font-size: 2rem;
       text-align: center;
@@ -43,20 +73,12 @@
       animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
       animation-delay: 0.5s;
     }
-
     @keyframes intro-fade {
       0%, 80% { opacity: 1; }
       100% { opacity: 0; z-index: -1; transform: scale(1.05); }
     }
-
-    @keyframes typeIn {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
+    @keyframes typeIn { from { width: 0 } to { width: 100% } }
+    @keyframes blink { 50% { border-color: transparent } }
 
     .vault-container {
       display: flex;
@@ -91,14 +113,9 @@
     .character-art {
       width: 360px;
       height: 500px;
-      position: relative;
+      box-shadow: 0 0 25px #ff3c00;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 60, 0, 0.5),
-                  0 0 80px rgba(255, 60, 0, 0.3),
-                  0 0 120px rgba(255, 60, 0, 0.2);
-      animation: auraPulse 4s ease-in-out infinite;
-      z-index: 2;
     }
 
     .panel {
@@ -109,7 +126,6 @@
       border-radius: 16px;
       max-width: 600px;
       box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
-      z-index: 5;
     }
 
     .glow {
@@ -171,23 +187,14 @@
       0%, 100% { box-shadow: 0 0 15px #ff3c00 inset; }
       50% { box-shadow: 0 0 35px #ff3c00 inset; }
     }
-
-    @keyframes auraPulse {
-      0%, 100% {
-        box-shadow: 0 0 40px rgba(255, 60, 0, 0.5),
-                    0 0 80px rgba(255, 60, 0, 0.3),
-                    0 0 120px rgba(255, 60, 0, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 60px rgba(255, 60, 0, 0.7),
-                    0 0 100px rgba(255, 60, 0, 0.4),
-                    0 0 140px rgba(255, 60, 0, 0.3);
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Intro -->
+
+  <!-- Particles -->
+  <div class="particles" id="particle-container"></div>
+
+  <!-- Intro Screen -->
   <div class="intro-screen">
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
@@ -214,7 +221,17 @@
   </div>
 
   <script>
-    // Countdown Timer
+    // Particle Generator
+    const container = document.getElementById("particle-container");
+    for (let i = 0; i < 60; i++) {
+      const particle = document.createElement("span");
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
+      particle.style.animationDelay = Math.random() * 10 + "s";
+      container.appendChild(particle);
+    }
+
+    // Countdown
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
@@ -225,25 +242,11 @@
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
-    // Copy Code
+    // Copy
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
-        const msg = document.createElement("div");
-        msg.textContent = "✓ CODE COPIED";
-        msg.style.position = "fixed";
-        msg.style.bottom = "20px";
-        msg.style.left = "50%";
-        msg.style.transform = "translateX(-50%)";
-        msg.style.background = "#1c1c1c";
-        msg.style.color = "#ff3c00";
-        msg.style.padding = "0.6rem 1.2rem";
-        msg.style.border = "1px solid #ff3c00";
-        msg.style.borderRadius = "10px";
-        msg.style.zIndex = "1000";
-        msg.style.boxShadow = "0 0 10px #ff3c00";
-        document.body.appendChild(msg);
-        setTimeout(() => msg.remove(), 2000);
+        alert("Code copied to clipboard: " + code);
       });
     }
   </script>
