@@ -17,7 +17,6 @@
       position: relative;
     }
 
-    /* Subtle background texture */
     body::before {
       content: '';
       position: fixed;
@@ -29,59 +28,6 @@
                   repeating-linear-gradient(0deg, rgba(255, 60, 0, 0.04) 0px, transparent 1px, rgba(255, 60, 0, 0.04) 2px);
       pointer-events: none;
       z-index: 0;
-    }
-
-    /* Floating particles */
-    .particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .particles span {
-      position: absolute;
-      display: block;
-      width: 6px;
-      height: 6px;
-      background: #ff3c00;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: floatUp 10s linear infinite;
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(100vh) scale(0.6);
-        opacity: 0.2;
-      }
-      to {
-        transform: translateY(-10vh) scale(1);
-        opacity: 0.6;
-      }
-    }
-
-    /* Glowing vault aura */
-    .vault-aura {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 480px;
-      height: 620px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 60, 0, 0.15), transparent 70%);
-      box-shadow: 0 0 80px 40px rgba(255, 60, 0, 0.1);
-      z-index: 1;
-      animation: auraPulse 5s infinite ease-in-out;
-      pointer-events: none;
-    }
-
-    @keyframes auraPulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-      50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
     }
 
     .intro-screen {
@@ -155,10 +101,37 @@
       animation: glitch 1.5s infinite alternate;
     }
 
-    .character-art {
+    .character-wrapper {
+      position: relative;
       width: 360px;
       height: 500px;
-      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vault-aura {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 60, 0, 0.15), transparent 70%);
+      box-shadow: 0 0 80px 40px rgba(255, 60, 0, 0.1);
+      animation: auraPulse 5s infinite ease-in-out;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .character-art {
+      position: relative;
+      width: 360px;
+      height: 500px;
+      z-index: 1;
     }
 
     .panel {
@@ -234,27 +207,25 @@
   </style>
 </head>
 <body>
-
-  <!-- Floating particles -->
-  <div class="particles" id="particle-container"></div>
-
-  <!-- Glowing aura behind vault -->
-  <div class="vault-aura"></div>
-
-  <!-- Intro screen -->
+  <!-- Intro -->
   <div class="intro-screen">
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
 
-  <!-- Main content -->
+  <!-- Vault -->
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
-    <div class="character-art">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
-        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
-      </video>
+
+    <div class="character-wrapper">
+      <div class="vault-aura"></div>
+      <div class="character-art">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+          <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
+
     <div class="panel">
       <p class="glow">USER ID: DSX-016</p>
       <p class="glow">DROPS CLAIMED: 01 / 24</p>
@@ -268,7 +239,7 @@
   </div>
 
   <script>
-    // Countdown logic
+    // Countdown
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
@@ -279,7 +250,7 @@
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
-    // Copy code to clipboard
+    // Copy Code
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
@@ -299,16 +270,6 @@
         document.body.appendChild(msg);
         setTimeout(() => msg.remove(), 2000);
       });
-    }
-
-    // Generate particles
-    const particleContainer = document.getElementById("particle-container");
-    for (let i = 0; i < 60; i++) {
-      const particle = document.createElement("span");
-      particle.style.left = Math.random() * 100 + "vw";
-      particle.style.top = Math.random() * 100 + "vh";
-      particle.style.animationDelay = (Math.random() * 10) + "s";
-      particleContainer.appendChild(particle);
     }
   </script>
 </body>
