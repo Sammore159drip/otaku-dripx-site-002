@@ -10,33 +10,27 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(ellipse at center, #000000 0%, #1c1c1c 100%);
+      background: #000;
       color: #ff3c00;
       font-family: 'Orbitron', sans-serif;
       overflow: hidden;
     }
 
-    /* Background Effects */
-    .scanlines {
+    /* 🔥 Subtle glowing background texture */
+    body::before {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: repeating-linear-gradient(to bottom, rgba(255,60,0,0.04) 0px, transparent 3px, rgba(255,60,0,0.04) 6px);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('https://i.ibb.co/2M9Q5xX/particles.gif') center center / cover no-repeat;
-      opacity: 0.05;
+      height: 100%;
+      width: 100%;
+      background: radial-gradient(circle at center, #1c1c1c 10%, #000 90%);
+      background-blend-mode: overlay;
+      background-image: url('https://i.ibb.co/gP3wrwz/orange-grain-texture.png'); /* optional subtle grain */
+      background-size: cover;
+      opacity: 0.15;
       z-index: 0;
+      pointer-events: none;
     }
 
     .intro-screen {
@@ -54,6 +48,7 @@
       opacity: 1;
       animation: intro-fade 4s ease-in-out forwards;
     }
+
     .intro-text {
       font-size: 2rem;
       text-align: center;
@@ -63,15 +58,18 @@
       color: #ff3c00;
       animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
     }
+
     @keyframes intro-fade {
       0% { opacity: 1; }
       80% { opacity: 1; }
       100% { opacity: 0; z-index: -1; }
     }
+
     @keyframes typeIn {
       from { width: 0 }
       to { width: 100% }
     }
+
     @keyframes blink {
       50% { border-color: transparent }
     }
@@ -87,11 +85,13 @@
       position: relative;
       padding: 1rem;
     }
+
     .glow-title {
       font-size: 2.6rem;
       color: #ff3c00;
       text-shadow: 0 0 10px #ff3c00, 0 0 20px #ff3c00;
     }
+
     .glitch-character {
       font-family: 'Share Tech Mono', monospace;
       font-size: 2rem;
@@ -103,10 +103,12 @@
       margin-bottom: 1.5rem;
       animation: glitch 1.5s infinite alternate;
     }
+
     .character-art {
       width: 360px;
       height: 500px;
     }
+
     .panel {
       margin-top: 2rem;
       padding: 2rem;
@@ -117,6 +119,7 @@
       box-shadow: 0 0 40px rgba(255, 60, 0, 0.2);
       z-index: 5;
     }
+
     .glow {
       font-family: 'Share Tech Mono', monospace;
       font-size: 1.2rem;
@@ -124,6 +127,7 @@
       color: #ff3c00;
       text-shadow: 0 0 10px #ff3c00;
     }
+
     .access-key {
       margin-top: 1rem;
       font-size: 1.4rem;
@@ -135,6 +139,7 @@
       color: #ff3c00;
       animation: pulse-glow 3s infinite ease-in-out;
     }
+
     .action-buttons {
       display: flex;
       justify-content: center;
@@ -142,6 +147,7 @@
       margin-top: 2.2rem;
       flex-wrap: wrap;
     }
+
     .btn {
       padding: 1rem 2rem;
       background: linear-gradient(135deg, #ff3c00, #320000);
@@ -154,6 +160,7 @@
       box-shadow: 0 0 20px #ff3c00, inset 0 0 10px #ff3c00;
       transition: all 0.4s ease;
     }
+
     .btn:hover {
       background: #fff;
       color: #000;
@@ -175,13 +182,9 @@
   </style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="particles"></div>
-  
   <div class="intro-screen">
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
-
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
@@ -201,7 +204,6 @@
       </div>
     </div>
   </div>
-
   <script>
     let countdown = document.getElementById("timer");
     let seconds = 11876;
