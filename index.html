@@ -17,6 +17,7 @@
       position: relative;
     }
 
+    /* Subtle background texture */
     body::before {
       content: '';
       position: fixed;
@@ -30,6 +31,7 @@
       z-index: 0;
     }
 
+    /* Floating particles */
     .particles {
       position: fixed;
       width: 100%;
@@ -61,6 +63,7 @@
       }
     }
 
+    /* Glowing vault aura */
     .vault-aura {
       position: absolute;
       top: 50%;
@@ -231,23 +234,19 @@
   </style>
 </head>
 <body>
-  <!-- Particles -->
+
+  <!-- Floating particles -->
   <div class="particles" id="particle-container"></div>
 
-  <!-- Glowing Aura -->
+  <!-- Glowing aura behind vault -->
   <div class="vault-aura"></div>
 
-  <!-- Intro -->
+  <!-- Intro screen -->
   <div class="intro-screen">
     <div class="intro-text">BANKAI PROTOCOL INITIALIZED...</div>
   </div>
 
-  <!-- Vault Audio -->
-  <audio id="vaultSound" autoplay>
-    <source src="https://files.catbox.moe/1o8py3.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Main Vault -->
+  <!-- Main content -->
   <div class="vault-container">
     <div class="glow-title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
     <div class="glitch-character">ICHIGO KUROSAKI // SOUL VAULT</div>
@@ -269,7 +268,7 @@
   </div>
 
   <script>
-    // Countdown Logic
+    // Countdown logic
     let countdown = document.getElementById("timer");
     let seconds = 11876;
     setInterval(() => {
@@ -280,7 +279,7 @@
       countdown.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
-    // Copy Code Logic
+    // Copy code to clipboard
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
@@ -302,11 +301,7 @@
       });
     }
 
-    // Audio volume control
-    const vaultSound = document.getElementById('vaultSound');
-    vaultSound.volume = 0.7;
-
-    // Generate Floating Particles
+    // Generate particles
     const particleContainer = document.getElementById("particle-container");
     for (let i = 0; i < 60; i++) {
       const particle = document.createElement("span");
