@@ -13,139 +13,149 @@
     }
 
     body {
-      background: #000;
-      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
       color: #ff4f00;
+      font-family: 'Orbitron', sans-serif;
+      padding: 30px 10px;
       display: flex;
       justify-content: center;
-      padding: 30px 15px;
     }
 
-    .vault-box {
+    .vault-wrapper {
+      max-width: 720px;
       width: 100%;
-      max-width: 650px;
+      background-color: #000;
       border: 2px solid #ff4f00;
-      box-shadow: 0 0 20px #ff4f00;
-      padding: 25px;
-      border-radius: 8px;
+      box-shadow: 0 0 25px #ff4f00;
+      padding: 20px;
       text-align: center;
+      border-radius: 10px;
     }
 
-    .vault-title {
-      font-size: 1.4rem;
-      color: #ff4f00;
+    .main-title {
+      font-size: 1.5rem;
       font-weight: 800;
       text-transform: uppercase;
+      color: #ff4f00;
       margin-bottom: 5px;
     }
 
-    .vault-subtitle {
-      font-size: 0.9rem;
+    .subtitle {
+      font-size: 0.85rem;
       color: #ffae84;
+      margin-bottom: 30px;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 25px;
     }
 
-    .vault-info-box {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: #ffae84;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .vault-info-box div {
-      flex: 1;
+    .stats-box {
+      flex: 1 1 45%;
       border: 1px solid #ff4f00;
-      padding: 10px;
+      padding: 12px;
+      font-size: 0.75rem;
+      text-align: left;
+      color: #ffb78d;
       box-shadow: 0 0 12px #ff4f00;
+      border-radius: 6px;
+      min-width: 140px;
     }
 
-    .vault-info-box p {
-      margin-bottom: 6px;
+    .stats-box p {
+      margin-bottom: 5px;
+      font-weight: bold;
       color: #ff4f00;
-      font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
     }
 
     .vault-video {
-      margin: 20px 0;
       border: 2px solid #ff4f00;
-      box-shadow: 0 0 20px #ff4f00;
-      border-radius: 5px;
+      box-shadow: 0 0 18px #ff4f00;
+      border-radius: 6px;
       overflow: hidden;
+      margin: 20px 0;
     }
 
     .vault-video video {
       width: 100%;
+      height: auto;
       display: block;
     }
 
-    .vault-details {
-      font-size: 0.85rem;
+    .drop-details {
+      font-size: 0.8rem;
       color: #ffae84;
-      margin-top: 15px;
+      line-height: 1.6;
     }
 
-    .vault-details span {
+    .drop-details span {
       color: #ff4f00;
       font-weight: 700;
     }
 
-    .code-box {
-      margin: 20px 0 10px;
+    .code-block {
+      margin-top: 20px;
+      padding: 10px 0;
       border: 1px solid #ff4f00;
-      padding: 12px;
-      color: #ff4f00;
+      font-size: 1.2rem;
       font-weight: 800;
-      font-size: 1.1rem;
-      box-shadow: 0 0 10px #ff4f00;
+      box-shadow: 0 0 12px #ff4f00;
+      color: #ff4f00;
+      border-radius: 6px;
     }
 
-    .button-row {
+    .button-group {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 15px;
+      flex-wrap: wrap;
+      margin-top: 15px;
     }
 
     .vault-button {
-      padding: 10px 20px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
       font-weight: bold;
-      font-size: 0.85rem;
-      cursor: pointer;
       border: none;
       border-radius: 4px;
       box-shadow: 0 0 10px #ff4f00;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .use-btn {
-      background-color: white;
-      color: #0d0d0d;
+    .vault-button.use {
+      background: #fff;
+      color: #000;
     }
 
-    .claim-btn {
-      background-color: #ff4f00;
-      color: white;
+    .vault-button.claim {
+      background: #ff4f00;
+      color: #fff;
     }
 
-    .footer-note {
+    .footer {
       font-size: 0.7rem;
       color: #ffb78d;
+      margin-top: 15px;
     }
 
-    @media (max-width: 480px) {
-      .vault-info-box {
-        flex-direction: column;
+    @media (max-width: 500px) {
+      .stats-box {
+        flex: 1 1 100%;
+        text-align: center;
       }
 
-      .vault-info-box div {
-        width: 100%;
+      .main-title {
+        font-size: 1.2rem;
       }
 
-      .button-row {
-        flex-direction: column;
+      .code-block {
+        font-size: 1rem;
       }
 
       .vault-button {
@@ -155,42 +165,46 @@
   </style>
 </head>
 <body>
-  <div class="vault-box">
-    <div class="vault-title">ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
-    <div class="vault-subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>
+  <div class="vault-wrapper">
+    <div class="main-title">ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
+    <div class="subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>
 
-    <div class="vault-info-box">
-      <div>
+    <div class="stats-container">
+      <div class="stats-box">
         <p>HOTFLOW STATUS:</p>
-        REE LINK +400001<br>SYNCH RATE: 8794<br>OVERRIDG CODE: VV-0BNX
+        REE LINK +400001<br>
+        SYNCH RATE: 8794<br>
+        OVERRIDG CODE: VV-0BNX
       </div>
-      <div>
+      <div class="stats-box">
         <p>DIRECT SYNC:</p>
-        DTSA-94-28<br>SOULDE VAGENT: 4436-DOOX<br>AUTH STATUS: SELF-LOCKED
+        DTSA-94-28<br>
+        SOULDE VAGENT: 4436-DOOX<br>
+        AUTH STATUS: SELF-LOCKED
       </div>
     </div>
 
     <div class="vault-video">
       <video autoplay muted loop playsinline>
-        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
+        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 
-    <div class="vault-details">
+    <div class="drop-details">
       USER ID: <span>DSX-916</span><br>
       DROPS CLAIMED: <span>01 / 24</span><br>
-      PROTOCOL ENDS IN: <span>03:17:02</span>
+      PROTOCOL ENDS IN: <span>03-17-21</span>
     </div>
 
-    <div class="code-box">ICHIGOX100</div>
+    <div class="code-block">ICHIGOX100</div>
 
-    <div class="button-row">
-      <button class="vault-button use-btn">⚡ USE CODE</button>
-      <button class="vault-button claim-btn">📥 CLAIM ANOTHER DRIP</button>
+    <div class="button-group">
+      <button class="vault-button use">⚡ USE CODE</button>
+      <button class="vault-button claim">📥 CLAIM ANOTHER DRIP</button>
     </div>
 
-    <div class="footer-note">🔒 Vault Access Logs Are Classified</div>
+    <div class="footer">🔒 Vault Access Logs Are Classified</div>
   </div>
 </body>
 </html>
