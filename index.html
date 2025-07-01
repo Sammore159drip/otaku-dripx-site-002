@@ -12,22 +12,23 @@
       box-sizing: border-box;
     }
 
-    body {
-      background-color: #000;
-      color: #ff4f00;
+    html, body {
+      height: 100%;
+      background: #000;
       font-family: 'Orbitron', sans-serif;
-      padding: 30px 10px;
       display: flex;
+      align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .vault-wrapper {
-      max-width: 720px;
-      width: 100%;
       background-color: #000;
       border: 2px solid #ff4f00;
       box-shadow: 0 0 25px #ff4f00;
       padding: 20px;
+      max-width: 720px;
+      width: 100%;
       text-align: center;
       border-radius: 10px;
     }
@@ -160,6 +161,11 @@
 
       .vault-button {
         width: 100%;
+      }
+
+      html, body {
+        padding: 10px;
+        align-items: flex-start;
       }
     }
   </style>
