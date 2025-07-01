@@ -1,163 +1,178 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ichigo Vault Drop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICHIGO KUROSAKI // VAULT DROP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  background: #0a0a0a;
-  font-family: 'Orbitron', sans-serif;
-  color: #ff3c00;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.glow-box {
-  border: 2px solid #ff3c00;
-  box-shadow: 0 0 15px #ff3c00;
-  padding: 1.5rem;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 100%;
-  margin: 1rem 0;
-}
-
-.title {
-  font-size: 1.8rem;
-  text-align: center;
-  color: #ff3c00;
-  text-shadow: 0 0 10px #ff3c00;
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-  opacity: 0.8;
-}
-
-.info-boxes {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.info-box {
-  border: 1px solid #ff3c00;
-  padding: 0.8rem;
-  width: 48%;
-  font-size: 0.75rem;
-  background: rgba(255, 60, 0, 0.05);
-  box-shadow: 0 0 10px #ff3c00;
-}
-
-.video-container {
-  border: 2px solid #ff3c00;
-  box-shadow: 0 0 20px #ff3c00;
-  margin: 1rem 0;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.code-section {
-  text-align: center;
-  font-size: 0.85rem;
-}
-
-.drop-code {
-  margin: 1rem 0;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  border: 2px solid #ff3c00;
-  background-color: #1a1a1a;
-  box-shadow: inset 0 0 10px #ff3c00;
-  color: #ff3c00;
-}
-
-.btn {
-  background: #ff3c00;
-  color: #000;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 0.3rem;
-  box-shadow: 0 0 10px #ff3c00;
-}
-
-.btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-.footnote {
-  text-align: center;
-  font-size: 0.7rem;
-  margin-top: 0.8rem;
-  opacity: 0.6;
-}
-
-  </style>
-</head>
-<body>  <div class="title">ACCESS GRANTED: ICHIGO'S HOLLOW SURGE</div>
-  <div class="subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>  <div class="info-boxes">
-    <div class="info-box">
-      HOTFLOW STATUS:<br> REE LINK +40000 |<br>
-      SYNCH RATE: 8794<br>
-      OVERRIDG CODE: VV-DBNX
-    </div>
-    <div class="info-box">
-      DIRECT SYNC:<br> DTSA -94-28<br>
-      SOULDE VAGENT: 4436-DOOX<br>
-      AUTH STATUS: SELF-LOCKED
-    </div>
-  </div>  <div class="video-container">
-    <video autoplay muted loop>
-      <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
-    </video>
-  </div>  <div class="glow-box">
-    <div class="code-section">
-      USER ID: DSX-916<br>
-      DROPS CLAIMED: 01 / 24<br>
-      PROTOCOL ENDS IN: <span id="timer">03:17:21</span>
-    </div>
-    <div class="drop-code" id="drop-code">ICHIGOX100</div>
-    <div class="buttons">
-      <button class="btn" onclick="copyCode()">⚡ USE CODE</button>
-      <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.in'">🧬 CLAIM ANOTHER DRIP</button>
-    </div>
-    <div class="footnote">🔒 Vault Access Logs Are Classified</div>
-  </div>  <script>
-    function copyCode() {
-      const text = document.getElementById("drop-code").textContent;
-      navigator.clipboard.writeText(text).then(() => alert("Code copied to clipboard!"));
     }
 
-    const timer = document.getElementById("timer");
-    let seconds = 11841;
-    setInterval(() => {
-      seconds--;
-      const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
-      const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-      const s = String(seconds % 60).padStart(2, '0');
-      timer.textContent = `${h}:${m}:${s}`;
-    }, 1000);
-  </script></body>
+    body {
+      background: #0d0d0d;
+      font-family: 'Orbitron', sans-serif;
+      color: #ff4f00;
+      padding: 20px;
+    }
+
+    .vault-container {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      border: 2px solid #ff4f00;
+      padding: 20px;
+      box-shadow: 0 0 25px #ff4f00;
+      border-radius: 10px;
+    }
+
+    .access-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ff4f00;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .access-title span {
+      display: block;
+      font-size: 1.6rem;
+      color: #ffa366;
+    }
+
+    .sub-title {
+      font-size: 1rem;
+      color: #ff884d;
+      margin-bottom: 30px;
+    }
+
+    .vault-core {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .vault-side {
+      flex: 1;
+      font-size: 0.9rem;
+      text-align: left;
+      color: #ffae84;
+    }
+
+    .vault-side p {
+      margin-bottom: 15px;
+    }
+
+    .vault-side span {
+      display: block;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ff4f00;
+    }
+
+    .vault-image video {
+      width: 200px;
+      border: 3px solid #ff4f00;
+      box-shadow: 0 0 20px #ff4f00;
+      border-radius: 8px;
+    }
+
+    .vault-info {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #ffae84;
+    }
+
+    .vault-info p {
+      margin: 8px 0;
+    }
+
+    .vault-info span {
+      font-weight: 700;
+      color: #ff4f00;
+    }
+
+    .code-box {
+      margin-top: 20px;
+    }
+
+    .code-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ff4f00;
+      margin-bottom: 15px;
+    }
+
+    .use-code-btn, .claim-btn {
+      background: #ff4f00;
+      color: #0d0d0d;
+      border: none;
+      padding: 12px 24px;
+      margin: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #ff4f00;
+    }
+
+    .use-code-btn:hover, .claim-btn:hover {
+      background: #ff7533;
+    }
+
+    .footer-note {
+      margin-top: 25px;
+      font-size: 0.8rem;
+      color: #ffb78d;
+    }
+  </style>
+</head>
+<body>
+  <div class="vault-container">
+    <h1 class="access-title">ACCESS GRANTED: ICHIGO’S<br><span>HOLLOW SURGE</span></h1>
+    <p class="sub-title">(ICHIGO KUROSAKI) // SOUL VAULT</p>
+
+    <div class="vault-core">
+      <div class="vault-side left">
+        <p>HOTLOVE STATUS:<br><span>REE LINK +400001</span></p>
+        <p>SYNCH RATE:<br><span>8794</span></p>
+        <p>OVERRIDG CODE:<br><span>VV-0BNX</span></p>
+      </div>
+
+      <div class="vault-image">
+        <video autoplay muted loop playsinline>
+          <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="vault-side right">
+        <p>DIRECT SYNC:<br><span>DTSA-94-28</span></p>
+        <p>SOULDE VAGENT:<br><span>4436-DOOX</span></p>
+        <p>AUTH STATUS:<br><span>SELF-LOCKED</span></p>
+      </div>
+    </div>
+
+    <div class="vault-info">
+      <p>USER ID: <span>DSX-916</span></p>
+      <p>DROPS CLAIMED: <span>01 / 24</span></p>
+      <p>PROTOCOL ENDS IN: <span>03-17-21</span></p>
+
+      <div class="code-box">
+        <p class="code-text">ICHIGOX100</p>
+        <button class="use-code-btn">⚡ USE CODE</button>
+        <button class="claim-btn">📥 CLAIM ANOTHER DRIP</button>
+      </div>
+
+      <p class="footer-note">🔒 Vault Access Logs Are Classified</p>
+    </div>
+  </div>
+</body>
 </html>
