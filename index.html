@@ -20,6 +20,7 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow: hidden;
     }
 
     .vault-wrapper {
@@ -31,6 +32,8 @@
       width: 100%;
       text-align: center;
       border-radius: 10px;
+      z-index: 1;
+      position: relative;
     }
 
     .main-title {
@@ -145,6 +148,59 @@
       margin-top: 15px;
     }
 
+    /* Intro Styles */
+    .intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      color: #ff4f00;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease 4.5s forwards;
+    }
+
+    .intro-line {
+      margin: 6px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #ff4f00;
+      width: 0;
+      animation: typing 1.5s steps(40, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    .intro-line:nth-child(2) {
+      animation-delay: 1.7s;
+    }
+
+    .intro-line:nth-child(3) {
+      animation-delay: 3.3s;
+    }
+
+    @keyframes typing {
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+      }
+    }
+
     @media (max-width: 500px) {
       .stats-box {
         flex: 1 1 100%;
@@ -171,22 +227,30 @@
   </style>
 </head>
 <body>
+  <!-- Intro Animation -->
+  <div class="intro-screen">
+    <div class="intro-line">> BANKAI PROTOCOL INITIALIZING...</div>
+    <div class="intro-line">> VIZARD MODE ACTIVE // Tensa Zangetsu Synced</div>
+    <div class="intro-line">> ACCESS GRANTED: SOUL VAULT UNLOCKED</div>
+  </div>
+
+  <!-- Main Vault -->
   <div class="vault-wrapper">
     <div class="main-title">ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
     <div class="subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>
 
     <div class="stats-container">
       <div class="stats-box">
-        <p>REIATSU CORE:</p>
-        LEVEL: HOLLOW-BANKAI SYNC<br>
-        SOUL PRESSURE: EXTREME<br>
-        VIZARD LINK: ACTIVE (TYPE-R)
+        <p>HOTFLOW STATUS:</p>
+        REE LINK +400001<br>
+        SYNC RATE: 8794<br>
+        OVERRIDE CODE: VV-0BNX
       </div>
       <div class="stats-box">
-        <p>SPIRIT CHAIN LINK:</p>
-        ZANPAKUTO: TENSA ZANGETSU<br>
-        FORM: FINAL GETSUGA TENSHOU<br>
-        STATUS: STABLE BUT VOLATILE
+        <p>DIRECT SYNC:</p>
+        DTSA-94-28<br>
+        SOUL AGENT: 4436-DOOX<br>
+        AUTH STATUS: SELF-LOCKED
       </div>
     </div>
 
@@ -207,7 +271,7 @@
 
     <div class="button-group">
       <button class="vault-button use">⚡ USE CODE</button>
-      <button class="vault-button claim" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">📥 CLAIM ANOTHER DRIP</button>
+      <button class="vault-button claim" onclick="window.location.href='https://otakudripx.blinkstore.in/'">📥 CLAIM ANOTHER DRIP</button>
     </div>
 
     <div class="footer">🔒 Vault Access Logs Are Classified</div>
