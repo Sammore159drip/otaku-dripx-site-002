@@ -6,11 +6,7 @@
   <title>ICHIGO KUROSAKI // VAULT DROP</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       height: 100%;
@@ -21,24 +17,46 @@
       justify-content: center;
       padding: 20px;
       overflow: hidden;
+      position: relative;
+      color: #ff4f00;
     }
 
-    body::before {
-      content: '';
+    .intro-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(255, 79, 0, 0.07) 0%, transparent 80%);
-      z-index: 1;
-      animation: emberGlow 6s ease-in-out infinite;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      flex-direction: column;
+      animation: fadeOut 6s ease forwards 3s;
     }
 
-    @keyframes emberGlow {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.7; }
+    .intro-text {
+      font-size: 2.6rem;
+      font-weight: bold;
+      text-align: center;
+      color: #ff4f00;
+      border-right: 3px solid #ff4f00;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(40, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 28ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
     }
 
     .vault-wrapper {
@@ -50,47 +68,7 @@
       width: 100%;
       text-align: center;
       border-radius: 10px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: fadeOut 3s 2.2s forwards;
-    }
-
-    .intro-text {
-      color: #ff4f00;
-      font-size: 1.6rem;
-      border-right: 2px solid #ff4f00;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 2s steps(40, end) forwards, blink 0.8s step-end infinite;
-    }
-
-    @keyframes typing {
-      to { width: 26ch; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+      z-index: 10;
     }
 
     .main-title {
@@ -205,24 +183,45 @@
       margin-top: 15px;
     }
 
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: #ff4f00;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0.2;
+      }
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0.6;
+      }
+    }
+
     @media (max-width: 500px) {
       .stats-box {
         flex: 1 1 100%;
         text-align: center;
       }
-
-      .main-title {
-        font-size: 1.2rem;
-      }
-
-      .code-block {
-        font-size: 1rem;
-      }
-
-      .vault-button {
-        width: 100%;
-      }
-
+      .main-title { font-size: 1.2rem; }
+      .code-block { font-size: 1rem; }
+      .vault-button { width: 100%; }
       html, body {
         padding: 10px;
         align-items: flex-start;
@@ -231,22 +230,31 @@
   </style>
 </head>
 <body>
+  <!-- Ember Particles -->
+  <div class="particles" id="particle-container"></div>
+
+  <!-- Intro Screen -->
   <div class="intro-screen">
-    <div class="intro-text">⚔️ Initializing Bankai Protocol...</div>
+    <div class="intro-text">☣ BANKAI PROTOCOL INITIALIZED...</div>
   </div>
 
+  <!-- Vault Wrapper -->
   <div class="vault-wrapper">
-    <div class="main-title">ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
-    <div class="subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>
+    <div class="main-title">💀 ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
+    <div class="subtitle">🧬 (ICHIGO KUROSAKI) // SOUL VAULT</div>
 
     <div class="stats-container">
       <div class="stats-box">
-        <p>🧬 BANKAI CORE LEVEL:</p>
-        Final Getsuga // 99.89% Sync
+        <p>BANKAI CORE LEVEL:</p>
+        Bankai Type: Tensa Zangetsu<br>
+        Spiritual Pressure: MAX<br>
+        Hollow Influence: BALANCED
       </div>
       <div class="stats-box">
-        <p>🌀 SPIRIT CHAIN:</p>
-        Hollow Merge Type-Z // 87% Stable
+        <p>SPIRIT CHAIN:</p>
+        Quincy Merge Rate: 43%<br>
+        Inner Hollow Status: NEUTRALIZED<br>
+        Core Sync: 97.8%
       </div>
     </div>
 
@@ -260,32 +268,46 @@
     <div class="drop-details">
       USER ID: <span>DSX-916</span><br>
       DROPS CLAIMED: <span>01 / 24</span><br>
-      PROTOCOL ENDS IN: <span id="timer">03:17:56</span>
+      PROTOCOL ENDS IN: <span id="timer">03:00:00</span>
     </div>
 
-    <div class="code-block" id="drop-code">🎯 ICHIGOX100</div>
+    <div class="code-block" id="drop-code">💸 ICHIGOX100</div>
 
     <div class="button-group">
       <button class="vault-button use" onclick="copyDropCode()">⚡ USE CODE</button>
-      <button class="vault-button claim" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">💧 CLAIM ANOTHER DRIP</button>
+      <button class="vault-button claim" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">📥 CLAIM ANOTHER DRIP</button>
     </div>
 
     <div class="footer">🔒 Vault Access Logs Are Classified</div>
   </div>
 
+  <!-- Scripts -->
   <script>
-    // Timer Logic
-    let countdown = document.getElementById("timer");
-    let seconds = 11876;
-    setInterval(() => {
-      seconds--;
-      let h = String(Math.floor(seconds / 3600)).padStart(2, '0');
-      let m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-      let s = String(seconds % 60).padStart(2, '0');
-      countdown.textContent = `${h}:${m}:${s}`;
-    }, 1000);
+    // Ember particles
+    const container = document.getElementById("particle-container");
+    for (let i = 0; i < 60; i++) {
+      const p = document.createElement("span");
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.top = Math.random() * 100 + "vh";
+      p.style.animationDelay = (Math.random() * 10) + "s";
+      container.appendChild(p);
+    }
 
-    // Clipboard Copy Logic
+    // Countdown timer (3 hours)
+    let seconds = 10800;
+    const countdown = document.getElementById("timer");
+
+    function updateTimer() {
+      if (seconds <= 0) return;
+      seconds--;
+      const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      countdown.textContent = `${hrs}:${mins}:${secs}`;
+    }
+    setInterval(updateTimer, 1000);
+
+    // Clipboard copy
     function copyDropCode() {
       const code = document.getElementById("drop-code").textContent;
       navigator.clipboard.writeText(code).then(() => {
