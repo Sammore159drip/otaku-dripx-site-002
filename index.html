@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ICHIGO KUROSAKI // VAULT DROP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
@@ -19,32 +19,61 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 60, 0, 0.1) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .particles span {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: #ff4f00;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatUp 8s linear infinite;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
+      to { transform: translateY(-10vh) scale(1.2); opacity: 0.7; }
     }
     .intro-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 9999;
-      animation: intro-fade 4s ease-in-out forwards;
+      z-index: 999;
+      opacity: 1;
+      animation: intro-fade 3.5s ease-in-out forwards;
     }
     .intro-text {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #ff4f00;
-      text-align: center;
-      border-right: 2px solid #ff4f00;
       white-space: nowrap;
       overflow: hidden;
-      animation: typeIn 2.6s steps(32, end), blink 0.75s step-end infinite;
+      border-right: 2px solid #ff4f00;
+      animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
     }
     @keyframes intro-fade {
-      0%, 90% { opacity: 1; }
+      0%, 80% { opacity: 1; }
       100% { opacity: 0; z-index: -1; }
     }
     @keyframes typeIn {
@@ -52,7 +81,7 @@
       to { width: 100% }
     }
     @keyframes blink {
-      50% { border-color: transparent; }
+      50% { border-color: transparent }
     }
     .vault-wrapper {
       background-color: #000;
@@ -63,7 +92,8 @@
       width: 100%;
       text-align: center;
       border-radius: 10px;
-      z-index: 1;
+      position: relative;
+      z-index: 10;
     }
     .main-title {
       font-size: 1.5rem;
@@ -167,60 +197,76 @@
         flex: 1 1 100%;
         text-align: center;
       }
-      .main-title {
-        font-size: 1.2rem;
-      }
-      .code-block {
-        font-size: 1rem;
-      }
-      .vault-button {
-        width: 100%;
-      }
-      html, body {
-        padding: 10px;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
 <body>
   <div class="intro-screen">
-    <div class="intro-text">BANKAI INITIATION // HOLLOW FORM ENGAGED...</div>
+    <div class="intro-text">⚔ BANKAI PROTOCOL ACTIVATED...</div>
   </div>
+
+  <div class="particles" id="particles"></div>
+
   <div class="vault-wrapper">
-    <div class="main-title">ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
-    <div class="subtitle">(ICHIGO KUROSAKI) // SOUL VAULT</div>
+    <div class="main-title">⚡ ACCESS GRANTED: ICHIGO’S HOLLOW SURGE</div>
+    <div class="subtitle">[ ICHIGO KUROSAKI ] // SOUL VAULT</div>
+
     <div class="stats-container">
       <div class="stats-box">
-        <p>HOLLOW AMPLIFICATION:</p>
-        Mask Sync: 96.4%<br>
-        Reiatsu Spike: 1.8x<br>
-        Inner Conflict: STABLE
+        <p>🔥 HOTFLOW STATUS:</p>
+        REIATSU CORE: 98.7%<br>
+        HOLLOW SURGE: ACTIVE<br>
+        CODE: 0X-HLLW-ZNG
       </div>
       <div class="stats-box">
-        <p>VAIZARD LINK:</p>
-        Resonance: ACTIVE<br>
-        Zanpakuto Core: ZANGETSU<br>
-        Status: UNRESTRICTED
+        <p>🔗 DIRECT SYNC:</p>
+        BANKAI TYPE: FINAL<br>
+        SYNC LVL: 99.9<br>
+        AUTHORIZED BY: CAPT-G13
       </div>
     </div>
+
     <div class="vault-video">
       <video autoplay muted loop playsinline>
-        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4" />
+        <source src="https://files.catbox.moe/84ozeu.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
+
     <div class="drop-details">
       USER ID: <span>DSX-916</span><br>
       DROPS CLAIMED: <span>01 / 24</span><br>
       PROTOCOL ENDS ON: <span>03-17-21</span>
     </div>
-    <div class="code-block">ICHIGOX100</div>
+
+    <div class="code-block" id="drop-code">🎟️ ICHIGOX100</div>
+
     <div class="button-group">
-      <button class="vault-button use">⚡ USE CODE</button>
-      <button class="vault-button claim">📥 CLAIM ANOTHER DRIP</button>
+      <button class="vault-button use" onclick="copyDropCode()">⚡ USE CODE</button>
+      <button class="vault-button claim" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">📥 CLAIM ANOTHER DRIP</button>
     </div>
+
     <div class="footer">🔒 Vault Access Logs Are Classified</div>
   </div>
+
+  <script>
+    // Ember Particle Generator
+    const container = document.getElementById("particles");
+    for (let i = 0; i < 50; i++) {
+      const span = document.createElement("span");
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.top = Math.random() * 100 + "vh";
+      span.style.animationDelay = Math.random() * 10 + "s";
+      container.appendChild(span);
+    }
+
+    // Copy Drop Code
+    function copyDropCode() {
+      const code = document.getElementById("drop-code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied to clipboard!");
+      });
+    }
+  </script>
 </body>
 </html>
